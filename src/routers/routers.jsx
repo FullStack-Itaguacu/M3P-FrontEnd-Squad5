@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { App } from "../App";
 
 import Products from "../pages/Products/Products";
+import Cart from "../pages/Products/Cart";
 import { SignUpPage } from "../pages/SignUp";
 import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
@@ -24,6 +25,10 @@ export const routers = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/singup",
