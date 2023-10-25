@@ -1,32 +1,32 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { App } from '../App';
+import { createBrowserRouter } from "react-router-dom";
+import { App } from "../App";
 
-import { ProductsPage } from '../pages/Products/Products';
-import { SignUpPage } from '../pages/SignUp'
-import { LoginPage } from '../pages/User/UserLogin'
-import { ErrorPage } from '../pages/ErrorPage';
-import { CreateUserPage } from '../pages/User/UserCreate'
+import Products from "../pages/Products/Products";
+import { SignUpPage } from "../pages/SignUp";
+import { LoginPage } from "../pages/User/UserLogin";
+import { ErrorPage } from "../pages/ErrorPage";
+import { CreateUserPage } from "../pages/User/UserCreate";
 
 export const routers = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/login',
+        path: "/login",
         element: <LoginPage />,
       },
       {
-        path: '/createUser',
+        path: "/createUser",
         element: <CreateUserPage />,
       },
       {
-        path: '/products',
-        element: <ProductsPage />,
+        path: "/products",
+        element: <Products />,
       },
       {
-        path: '/singup',
+        path: "/singup",
         element: <SignUpPage />,
       },
     ],

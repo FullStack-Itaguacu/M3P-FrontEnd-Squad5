@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Title, Input, Pagination } from "@mantine/core";
+import "./MedicamentsList.css";
 // import { useNavigate } from "react-router-dom";
-import CardMedicamento from "../components/Medicamentos/cardMedicamento";
+import CardMedicamento from "./CardMedicamento";
 // import { LoginContext } from "../context/LoginContext";
 import axios from "axios";
 
@@ -40,7 +41,7 @@ function MedicamentsList() {
       }
       if (offset > 0) setPrevious(true);
     }
-  }, [listaMedicamentos, limit]);
+  }, [listaMedicamentos, limit, offset]);
 
   useEffect(() => {
     setFilter(
