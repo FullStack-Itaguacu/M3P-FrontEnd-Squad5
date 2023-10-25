@@ -39,8 +39,7 @@
     "styled-components": "^5.3.9",
     "react-icon": "^1.0.0",
     "react-icons": "^4.11.0",
-    "react-pro-sidebar": "^1.1.0-alpha.1",
-    "react-router-dom": "^6.10.0"
+    "react-pro-sidebar": "^1.1.0-alpha.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
