@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { App } from '../App';
 
-import { ProductsPage } from '../pages/Products';
+import { ProductsPage } from '../pages/Products/Products';
 import { SignUpPage } from '../pages/SignUp'
 import { LoginPage } from '../pages/User/UserLogin'
 import { ErrorPage } from '../pages/ErrorPage';
