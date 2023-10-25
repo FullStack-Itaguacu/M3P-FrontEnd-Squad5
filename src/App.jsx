@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { createContext } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SideBar from './components/SideBar/SideBar'
 
 export const AppContext = createContext();
 
@@ -14,6 +15,7 @@ export const App = () => {
     <>
     <AppContext.Provider value={valoresVF}>
         <div>
+          <SideBar />
           <Outlet />
         </div>
     </AppContext.Provider>
