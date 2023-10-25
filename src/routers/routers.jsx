@@ -3,8 +3,9 @@ import { App } from '../App';
 
 import { ProductsPage } from '../pages/Products';
 import { SignUpPage } from '../pages/SignUp'
-import { LoginPage } from '../pages/UserLogin'
+import { LoginPage } from '../pages/User/UserLogin'
 import { ErrorPage } from '../pages/ErrorPage';
+import { CreateUserPage } from '../pages/User/UserCreate'
 
 export const routers = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const routers = createBrowserRouter([
       {
         path: '/login',
         element: <LoginPage />,
+      },
+      {
+        path: '/createUser',
+        element: <CreateUserPage />,
       },
       {
         path: '/products',

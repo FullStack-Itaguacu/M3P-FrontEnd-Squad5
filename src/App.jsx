@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { createContext } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SideBar from './components/SideBar/SideBar'
 
 export const AppContext = createContext();
@@ -10,11 +12,23 @@ export const App = () => {
   const valoresVF = {};
 
   return (
+    <>
     <AppContext.Provider value={valoresVF}>
         <div>
           <SideBar />
           <Outlet />
         </div>
     </AppContext.Provider>
+    <ToastContainer position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored" />
+    </>
   );
 };
