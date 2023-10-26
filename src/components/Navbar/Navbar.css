@@ -1,0 +1,25 @@
+/* Navbar.css */
+
+/* Estilo para a barra de navegação */
+nav {
+    background-color: #060b26;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo para os links na barra de navegação */
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+}
+
+/* Estilo para o botão de sair */
+nav button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
