@@ -21,6 +21,7 @@
     "@mantine/prism": "^6.0.7",
     "@react-leaflet/core": "^2.1.0",
     "@tabler/icons-react": "^2.16.0",
+    "axios": "^1.5.1",
     "bootstrap": "^5.2.3",
     "coordenadas-do-cep": "^1.2.0",
     "icons-react": "^3.7.1",
@@ -32,14 +33,16 @@
     "react-context": "0.0.3",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-icon": "^1.0.0",
+    "react-icons": "^4.11.0",
     "react-imask": "^6.6.0",
     "react-input-mask": "^2.0.4",
     "react-leaflet": "^4.2.1",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
+    "react-router-dom": "^6.10.0",
     "react-toastify": "^9.1.2",
     "styled-components": "^5.3.9",
-    "react-icon": "^1.0.0",
-    "react-icons": "^4.11.0",
-    "react-pro-sidebar": "^1.1.0-alpha.1"
+    "use-local-storage-state": "^19.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
