@@ -33,10 +33,14 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartTotal = () => {
-    return cartItems.reduce(
-      (total, item) =>
-        total + parseFloat(item.unitPrice) * parseInt(item.quantity_cart),
-      0
+    return parseFloat(
+      cartItems
+        .reduce(
+          (total, item) =>
+            total + parseFloat(item.unitPrice) * parseInt(item.quantity_cart),
+          0
+        )
+        .toFixed(2)
     );
   };
 

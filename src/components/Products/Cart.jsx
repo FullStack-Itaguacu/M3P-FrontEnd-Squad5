@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Container, Stack, Title } from "@mantine/core";
+import { Container, Stack, Title, Flex, Button, Text } from "@mantine/core";
 import caixaMedicamento from "../../assets/caixa-remedio.png";
 
 function Cart() {
@@ -15,10 +15,10 @@ function Cart() {
       <Title order={1} mt="lg" ta="center">
         Carrinho
       </Title>
-      <Stack>
+      <Stack bg="#DCE4F5" mt="md" mb="md" p="sm">
         {cartItems.map((item) => (
-          <div className="flex justify-between items-center" key={item.id}>
-            <div className="flex gap-4">
+          <Flex direction="col" justify="space-between" key={item.id}>
+            <Flex>
               <img
                 src={
                   isImage(item.imageLink) ? item.imageLink : caixaMedicamento
@@ -28,49 +28,50 @@ function Cart() {
                 height={100}
               />
               <div className="flex flex-col">
-                <h1 className="text-lg font-bold">
+                <h2 className="text-lg font-bold">
                   {item.name} {item.dosage} {item.unitDosage}
-                </h1>
+                </h2>
                 <p className="text-gray-600">R$ {item.unitPrice}</p>
               </div>
-            </div>
-            <div className="flex gap-4">
-              <button
-                className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+            </Flex>
+            <Flex align="center">
+              <Button
                 onClick={() => {
                   addToCart(item, 1);
                 }}
               >
-                +
-              </button>
-              <p>{item.quantity_cart}</p>
-              <button
-                className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                <Text ta="center">+</Text>
+              </Button>
+              <Text size="xl" m="sm">
+                {item.quantity_cart}
+              </Text>
+              <Button
                 onClick={() => {
-                  removeFromCart(item);
+                  if (item.quantity_cart == 1) removeFromCart(item);
+                  else addToCart(item, -1);
                 }}
               >
-                -
-              </button>
-            </div>
-          </div>
+                <b>-</b>
+              </Button>
+            </Flex>
+          </Flex>
         ))}
       </Stack>
       {cartItems.length > 0 ? (
-        <div className="flex flex-col justify-between items-center">
-          <h1 className="text-lg font-bold">Total: ${getCartTotal()}</h1>
-          <button
-            className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+        <Flex bg="#DCE4F5" mt="md" mb="md" p="sm" justify="space-between">
+          <h2 className="text-lg font-bold">Total: R$ {getCartTotal()}</h2>
+          <Button
             onClick={() => {
               clearCart();
             }}
           >
-            Clear cart
-          </button>
-        </div>
+            Limpar carrinho
+          </Button>
+        </Flex>
       ) : (
-        <h1 className="text-lg font-bold">Your cart is empty</h1>
+        <h1 className="text-lg font-bold">Seu carrinho está vazio</h1>
       )}
+      <Button size="xl">Finalizar compra</Button>
     </Container>
   );
 }
