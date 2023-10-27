@@ -30,7 +30,7 @@ export const SidebarData = [
   },
   {
     title: 'Check Out',
-    path: '/#',
+    path: '/carrinho-de-compras',
     icon: <FaIcons.FaTruck />,
     cName: 'nav-text'
   },
