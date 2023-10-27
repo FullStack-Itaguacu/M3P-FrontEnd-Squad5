@@ -24,7 +24,7 @@ export const SidebarData = [
   },
   {
     title: 'User',
-    path: '/#',
+    path: '/createUser',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
