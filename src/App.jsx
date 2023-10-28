@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SideBar from "./components/SideBar/SideBar";
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 
 export const AppContext = createContext();
 
@@ -13,14 +14,16 @@ export const App = () => {
 
   return (
     <>
-      <AppContext.Provider value={valoresVF}>
-        <CartProvider>
-          <div>
-            <SideBar />
-            <Outlet />
-          </div>
-        </CartProvider>
-      </AppContext.Provider>
+      <AuthProvider>
+        <AppContext.Provider value={valoresVF}>
+          <CartProvider>
+            <div>
+              <SideBar />
+              <Outlet />
+            </div>
+          </CartProvider>
+        </AppContext.Provider>
+      </AuthProvider>
       <ToastContainer
         position="top-right"
         autoClose={5000}

@@ -15,10 +15,13 @@ import {
   Image,
   Checkbox,
 } from "@mantine/core";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const FormLogin = () => {
   const [type] = useToggle(["entrar", "registrar"]);
   const navigate = useNavigate();
+  const { token, setToken, userId, typeUser } = useContext(AuthContext);
 
   const form = useForm({
     initialValues: {
@@ -58,7 +61,8 @@ const FormLogin = () => {
       if (response.status === 200) {
         const responseToken = await response.json();
         const { token } = responseToken;
-        localStorage.setItem("token", token);
+        // localStorage.setItem("token", token);
+        setToken(token);
         navigate("/singup");
       } else {
         const responseData = await response.json();

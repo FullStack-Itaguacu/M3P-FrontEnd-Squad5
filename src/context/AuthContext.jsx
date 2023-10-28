@@ -2,9 +2,9 @@ import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [userId, setUserId] = useState("");
   const [typeUser, setTypeUser] = useState("");
@@ -13,8 +13,9 @@ const AuthProvider = ({ children }) => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = token;
       localStorage.setItem("token", token);
-      setUserId(token.jwtDecode.id);
-      setTypeUser(token.jwtDecode.typeUser);
+      console.log(jwtDecode(token));
+      setUserId(jwtDecode(token).id);
+      setTypeUser(jwtDecode(token).typeUser);
     } else {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("token");
@@ -31,5 +32,3 @@ const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
-
-export default AuthProvider;
