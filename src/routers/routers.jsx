@@ -7,6 +7,7 @@ import { SignUpPage } from "../pages/SignUp";
 import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserPage } from "../pages/User/UserCreate";
+import { ProtectedRoute } from "./protectedRoutes";
 
 export const routers = createBrowserRouter([
   {
@@ -24,11 +25,19 @@ export const routers = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products />,
+        element: (
+          <ProtectedRoute>
+            <Products />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/carrinho-de-compras",
-        element: <Cart />,
+        element: (
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/singup",
