@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form';
 import { IMaskInput } from 'react-imask';
 import { toast } from 'react-toastify';
 import { FormStyleCreateUser } from './styled'
-import { DateInput, DatesProvider  } from '@mantine/dates';
+import { DateInput, DatesProvider } from '@mantine/dates';
 import 'dayjs/locale/pt-br';
 import dayjs from 'dayjs';
 import ValidarCPF from '../utils/ValidarCPF';
@@ -32,7 +32,7 @@ const FormularioLogin = () => {
   const form = useForm({
     initialValues: {
       email: '',
-      cpf:'',
+      cpf: '',
       fullName: '',
       birthDate: '',
       password: '',
@@ -52,9 +52,9 @@ const FormularioLogin = () => {
       email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Email inválido'),
       zip: (val) => (/^\d{2}\d{3}[-]\d{3}$/.test(val) ? null : 'CEP Inválido'),
       password: (val) => (/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,30}$/.test(val) ? null : 'A senha precisa ter pelo menos 8 caracteres, 1 letra e 1 número'),
-      cpf: (val) => (ValidarCPF(val) ? null : 'CPF Inválido'), 
+      cpf: (val) => (ValidarCPF(val) ? null : 'CPF Inválido'),
     },
-    transformValues: (values) => { 
+    transformValues: (values) => {
       return {
         ...values,
         birthDate: dayjs(values.birthDate).format('YYYY-MM-DD'),
@@ -62,7 +62,7 @@ const FormularioLogin = () => {
         zip: values.zip.match(/\d/g).join(""),
         phone: values.phone.match(/\d/g).join("")
 
-    }
+      }
     }
   });
 
@@ -73,7 +73,7 @@ const FormularioLogin = () => {
     form.setFieldValue('state', values.estado)
     form.setFieldValue('lat', values.latitude)
     form.setFieldValue('lon', values.longitude)
-  
+
   }
 
   function parseDate(input) {
@@ -82,11 +82,11 @@ const FormularioLogin = () => {
     const match = regex.exec(input);
 
     if (match && match.groups) {
-        return new Date(Number(match.groups.ano), Number(match.groups.mes) - 1, Number(match.groups.dia));
+      return new Date(Number(match.groups.ano), Number(match.groups.mes) - 1, Number(match.groups.dia));
     }
 
     return null;
-}
+  }
 
   const registrarUsuario = async (values) => {
 
@@ -121,16 +121,16 @@ const FormularioLogin = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ user , address }),
+        body: JSON.stringify({ user, address }),
       });
 
       if (response.status === 201) {
-          const responseSucesso = await response.json()
-          form.reset()
-          toast.success(responseSucesso.menssage)
+        const responseSucesso = await response.json()
+        form.reset()
+        toast.success(responseSucesso.menssage)
       } else {
         const responseData = await response.json()
-        if (responseData && (responseData.error || responseData.msg) ) {
+        if (responseData && (responseData.error || responseData.msg)) {
           toast.info(responseData.error)
         } else {
           toast.error('Erro no servidor. Contate o administrador do sistema!');
@@ -189,20 +189,20 @@ const FormularioLogin = () => {
                     />
                   </Grid.Col>
                   <Grid.Col span={6}>
-                  <DatesProvider settings={{ locale: 'pt-br', firstDayOfWeek: 0, weekendDays: [0], timezone: 'UTC' }}>
-                    <DateInput 
-                      withAsterisk
-                      maxLength={10}
-                      allowFreeInput
-                      valueFormat="DD/MM/YYYY"
-                      label="Data Nascimento"
-                      placeholder="Data Nascimento"
-                      dateParser={parseDate}
-                      locale="pt-br"
-                      required
-                      {...form.getInputProps('birthDate')}
-                    />
-                     </DatesProvider>
+                    <DatesProvider settings={{ locale: 'pt-br', firstDayOfWeek: 0, weekendDays: [0], timezone: 'UTC' }}>
+                      <DateInput
+                        withAsterisk
+                        maxLength={10}
+                        allowFreeInput
+                        valueFormat="DD/MM/YYYY"
+                        label="Data Nascimento"
+                        placeholder="Data Nascimento"
+                        dateParser={parseDate}
+                        locale="pt-br"
+                        required
+                        {...form.getInputProps('birthDate')}
+                      />
+                    </DatesProvider>
                   </Grid.Col>
                   <Grid.Col span={6}>
                     <TextInput
@@ -222,9 +222,9 @@ const FormularioLogin = () => {
                   </Grid.Col>
                   <Grid.Col span={12}>
                     <BuscaCEP
-                    cep={form.getInputProps('zip').value}
-                    onChangeCep={onchangeCep}
-                    onChange={form.getInputProps('zip').onChange}
+                      cep={form.getInputProps('zip').value}
+                      onChangeCep={onchangeCep}
+                      onChange={form.getInputProps('zip').onChange}
                     />
                   </Grid.Col>
                   <Grid.Col span={9}>
@@ -278,34 +278,34 @@ const FormularioLogin = () => {
                       label="Estado"
                       placeholder="Informe o Estado"
                       required
-                      data={['AC', 
-                             'AL', 
-                             'AP', 
-                             'AM', 
-                             'BA', 
-                             'CE', 
-                             'DF',
-                             'ES', 
-                             'GO', 
-                             'MA', 
-                             'MT', 
-                             'MS', 
-                             'MG', 
-                             'PA',
-                             'PB', 
-                             'PR', 
-                             'PE', 
-                             'PI', 
-                             'RJ', 
-                             'RN', 
-                             'RS',
-                             'RO', 
-                             'RR', 
-                             'SC', 
-                             'SP', 
-                             'SE', 
-                             'TO'
-                            ]}
+                      data={['AC',
+                        'AL',
+                        'AP',
+                        'AM',
+                        'BA',
+                        'CE',
+                        'DF',
+                        'ES',
+                        'GO',
+                        'MA',
+                        'MT',
+                        'MS',
+                        'MG',
+                        'PA',
+                        'PB',
+                        'PR',
+                        'PE',
+                        'PI',
+                        'RJ',
+                        'RN',
+                        'RS',
+                        'RO',
+                        'RR',
+                        'SC',
+                        'SP',
+                        'SE',
+                        'TO'
+                      ]}
                       searchable
                       {...form.getInputProps('state')}
                     />
