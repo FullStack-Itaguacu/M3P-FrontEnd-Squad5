@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Container, Stack, Title, Flex, Button, Text } from "@mantine/core";
 import caixaMedicamento from "../../assets/caixa-remedio.png";
+import Checkout from "./Checkout";
 
 function Cart() {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
@@ -77,7 +78,7 @@ function Cart() {
       ) : (
         <h1 className="text-lg font-bold">Seu carrinho está vazio</h1>
       )}
-      {showAddresses ? "Endereços" : null}
+      {showAddresses ? <Checkout></Checkout> : null}
     </Container>
   );
 }
