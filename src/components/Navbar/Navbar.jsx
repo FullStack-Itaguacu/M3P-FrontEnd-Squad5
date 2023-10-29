@@ -23,6 +23,10 @@ function Navbar() {
         getUserFullName();
     }, []);
 
+    const handleLogout = () => {
+        console.log("Olá")
+    }
+
     return (
         <div>
             <nav>
