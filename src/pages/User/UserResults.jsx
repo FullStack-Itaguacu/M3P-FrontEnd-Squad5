@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Card } from '@mantine/core';
 
-export default function UserResults() {
+export function UserResults() {
     const [updateList, setUpdateList] = useState(false)
     const [list, setList] = useState([])
 

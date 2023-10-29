@@ -7,6 +7,8 @@ import { SignUpPage } from "../pages/SignUp";
 import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserPage } from "../pages/User/UserCreate";
+import { UserResults } from "../pages/User/UserResults"
+import { CreateProducts } from "../pages/Products/createProducts"
 
 export const routers = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ export const routers = createBrowserRouter([
         path: "/singup",
         element: <SignUpPage />,
       },
+      {
+        path: "/user-results",
+        element: <UserResults/>
+      },
+      {
+        path: "/create-user",
+        element: <CreateProducts/>
+      }
     ],
   },
 ]);
