@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Button({ text, onClick }) {
+function Button(props) {
     return (
-        <button onClick={onClick}>
-            {text}
+        <button type='submit'>
+            {props}
         </button>
     );
 }
