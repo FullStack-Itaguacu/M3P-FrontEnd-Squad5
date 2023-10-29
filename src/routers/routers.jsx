@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "../App";
-
+import { UserResults } from "../pages/User/UserResults"
 import Products from "../pages/Products/Products";
 import Cart from "../pages/Products/Cart";
 import { SignUpPage } from "../pages/SignUp";
 import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserPage } from "../pages/User/UserCreate";
-import { UserResults } from "../pages/User/UserResults"
+
 import { CreateProducts } from "../pages/Products/createProducts"
 
 export const routers = createBrowserRouter([
