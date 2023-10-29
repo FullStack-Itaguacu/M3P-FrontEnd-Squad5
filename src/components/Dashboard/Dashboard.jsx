@@ -35,7 +35,7 @@ function Dashboard() {
       <p className="text-center text-black">Abaixo você pode acompanhar um resumo dos seus resultados até agora:</p>
       <Stack direction="horizontal" gap={3} className="d-flex justify-content-center">
         <Col md={2}>      
-          <Card className={`p-4 ${styles.cardStyle}`}>
+          <Card className={`p-3 ${styles.cardStyle}`}>
             <Card.Body>
               <i className="bi bi-cash-stack text-black d-flex justify-content-center p-3"></i>
               <Card.Title className="text-center text-black fs-3">Total de Vendas (R$)</Card.Title>
@@ -45,7 +45,7 @@ function Dashboard() {
         </Col>
 
         <Col md={2}>
-        <Card className={`p-4 ${styles.cardStyle}`}>
+        <Card className={`p-3 ${styles.cardStyle}`}>
           <Card.Body>
             <i className="bi bi-box-seam text-black d-flex justify-content-center p-3"></i>
             <Card.Title className="text-center text-black fs-3">Produtos Vendidos</Card.Title>
