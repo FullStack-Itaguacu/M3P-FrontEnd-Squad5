@@ -24,13 +24,13 @@ export const SidebarData = [
   },
   {
     title: 'User',
-    path: '/#',
+    path: '/createUser',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
     title: 'Check Out',
-    path: '/#',
+    path: '/carrinho-de-compras',
     icon: <FaIcons.FaTruck />,
     cName: 'nav-text'
   },
