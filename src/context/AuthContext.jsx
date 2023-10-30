@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
@@ -22,13 +22,8 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token]);
 
-  // Função de logout
-  const handleLogout = () => {
-    setToken('')
-  }
-
   return (
-    <AuthContext.Provider value={{ token, setToken, userId, isAdmin, handleLogout }}>
+    <AuthContext.Provider value={{ token, setToken, userId, isAdmin }}>
       <>{children}</>
     </AuthContext.Provider>
   );

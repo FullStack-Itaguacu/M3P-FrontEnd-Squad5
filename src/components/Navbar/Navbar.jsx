@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../Navbar/Navbar.css'
-import Button from "../Button/Button";
-import { AuthProvider } from "../../context/AuthContext"
 
 
 function Navbar() {
 
-    const { token, handleLogout } = AuthProvider()
     const [userName, setUserName] = useState('')
 
     // Adicionando o nome do usuário ao estado quando a resposta da API chegar
@@ -26,6 +23,11 @@ function Navbar() {
         getUserFullName();
     }, []);
 
+    // Função de logout
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+    }
+
     return (
         <div>
             <nav>
@@ -41,7 +43,9 @@ function Navbar() {
                     {userName && <p>Olá, {userName}!</p>}
                 </div>
 
-                <Button text="Sair" onClick={handleLogout} />
+                <button onClick={handleLogout}>
+                    Sair
+                </button>
             </nav>
         </div>
     )

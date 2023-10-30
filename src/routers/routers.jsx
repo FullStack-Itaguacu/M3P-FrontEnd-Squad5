@@ -9,7 +9,7 @@ import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
 
-// import { CreateProducts } from "../pages/Products/createProducts"
+import  CreateProducts  from "../pages/Products/createProducts"
 
 export const routers = createBrowserRouter([
   {
