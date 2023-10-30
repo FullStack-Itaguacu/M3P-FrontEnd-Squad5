@@ -3,10 +3,7 @@ import { upperFirst } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import { IMaskInput } from 'react-imask';
 import { toast } from 'react-toastify';
-<<<<<<< HEAD
-=======
 // import { FormStyleCreateUser } from './styled'
->>>>>>> b10eb653217f12b52d2a2375a87c99023043ce32
 
 import {
     TextInput,
