@@ -10,10 +10,9 @@ import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
 import { AdminOnly } from "./adminOnlyRoutes";
 import Dashboard from "../components/Dashboard/dashboard";
-
+import CreateProducts from "../pages/Products/createProducts"
 import CreateProducts from "../pages/Products/createProducts";
 import { Support } from "../pages/Support";
-
 export const routers = createBrowserRouter([
   {
     path: "/",

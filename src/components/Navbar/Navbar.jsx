@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../Navbar/Navbar.css'
-import Button from "../Button/Button";
+
 
 function Navbar() {
 
-    const [userName, setUserName] = useState('');
+    const [userName, setUserName] = useState('')
 
     // Adicionando o nome do usuário ao estado quando a resposta da API chegar
     useEffect(() => {
@@ -23,6 +23,11 @@ function Navbar() {
         getUserFullName();
     }, []);
 
+    // Função de logout
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+    }
+
     return (
         <div>
             <nav>
@@ -38,7 +43,9 @@ function Navbar() {
                     {userName && <p>Olá, {userName}!</p>}
                 </div>
 
-                <Button text="Sair" onClick={handleLogout} />
+                <button onClick={handleLogout}>
+                    Sair
+                </button>
             </nav>
         </div>
     )
