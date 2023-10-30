@@ -63,7 +63,7 @@ const FormLogin = () => {
         const { token } = responseToken;
         // localStorage.setItem("token", token);
         setToken(token);
-        navigate("/singup");
+        navigate("/dashboard");
       } else {
         const responseData = await response.json();
         if (responseData && responseData.error) {
