@@ -91,7 +91,6 @@ const FormLogin = () => {
           />
         </Group>
         <Paper radius="md" p="xl" withBorder>
-          y
           <Text size="lg" weight={500}>
             Entrar com email e senha <br />
           </Text>
