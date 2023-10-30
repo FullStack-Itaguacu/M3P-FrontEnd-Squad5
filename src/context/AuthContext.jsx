@@ -13,9 +13,8 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       axios.defaults.headers.common["Authorization"] = token;
       localStorage.setItem("token", token);
-      console.log(jwtDecode(token));
       setUserId(jwtDecode(token).id);
-      setIsAdmin(jwtDecode(token).typeUser);
+      setIsAdmin(jwtDecode(token).administrador);
     } else {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("token");
