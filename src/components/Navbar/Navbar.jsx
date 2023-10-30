@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../Navbar/Navbar.css'
 import Button from "../Button/Button";
-import { useAuth } from "../../context/LogoutContext"
+import { AuthProvider } from "../../context/AuthContext"
+
 
 function Navbar() {
 
-    const { handleLogout} = useAuth()
-    const [userName, setUserName] = useState('');
+    const { token, handleLogout } = AuthProvider()
+    const [userName, setUserName] = useState('')
 
     // Adicionando o nome do usuário ao estado quando a resposta da API chegar
     useEffect(() => {

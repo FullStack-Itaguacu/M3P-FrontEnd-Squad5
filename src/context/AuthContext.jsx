@@ -22,8 +22,13 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token]);
 
+  // Função de logout
+  const handleLogout = () => {
+    setToken('')
+  }
+
   return (
-    <AuthContext.Provider value={{ token, setToken, userId, isAdmin }}>
+    <AuthContext.Provider value={{ token, setToken, userId, isAdmin, handleLogout }}>
       <>{children}</>
     </AuthContext.Provider>
   );
