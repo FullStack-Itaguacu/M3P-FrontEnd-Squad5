@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Container, Stack, Title, Flex, Button, Text } from "@mantine/core";
 import caixaMedicamento from "../../assets/caixa-remedio.png";
+import Checkout from "./Checkout";
 
 function Cart() {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
     useContext(CartContext);
+  const [showAddresses, setShowAddresses] = useState(false);
   function isImage(url) {
     return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
   }
@@ -58,20 +60,25 @@ function Cart() {
         ))}
       </Stack>
       {cartItems.length > 0 ? (
-        <Flex bg="#DCE4F5" mt="md" mb="md" p="sm" justify="space-between">
-          <h2 className="text-lg font-bold">Total: R$ {getCartTotal()}</h2>
-          <Button
-            onClick={() => {
-              clearCart();
-            }}
-          >
-            Limpar carrinho
+        <Container>
+          <Flex bg="#DCE4F5" mt="md" mb="md" p="sm" justify="space-between">
+            <h2 className="text-lg font-bold">Total: R$ {getCartTotal()}</h2>
+            <Button
+              onClick={() => {
+                clearCart();
+              }}
+            >
+              Limpar carrinho
+            </Button>
+          </Flex>
+          <Button size="xl" onClick={() => setShowAddresses(true)}>
+            Finalizar compra
           </Button>
-        </Flex>
+        </Container>
       ) : (
         <h1 className="text-lg font-bold">Seu carrinho está vazio</h1>
       )}
-      <Button size="xl">Finalizar compra</Button>
+      {showAddresses ? <Checkout></Checkout> : null}
     </Container>
   );
 }
