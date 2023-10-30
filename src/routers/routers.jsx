@@ -8,8 +8,9 @@ import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
-
-// import { CreateProducts } from "../pages/Products/createProducts"
+import { AdminOnly } from "./adminOnlyRoutes";
+import Dashboard from "../components/Dashboard/dashboard";
+import CreateProducts from "../pages/Products/createProducts"
 
 export const routers = createBrowserRouter([
   {
@@ -20,6 +21,14 @@ export const routers = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <AdminOnly>
+            <Dashboard />
+          </AdminOnly>
+        ),
       },
       {
         path: "/createUser",
