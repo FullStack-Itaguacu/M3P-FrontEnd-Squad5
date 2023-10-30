@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "../App";
-import { UserResults } from "../pages/User/UserResults"
+import { UserResults } from "../pages/User/UserResults";
 import Products from "../pages/Products/Products";
 import Cart from "../pages/Products/Cart";
 import { SignUpPage } from "../pages/SignUp";
@@ -11,7 +11,8 @@ import { ProtectedRoute } from "./protectedRoutes";
 import { AdminOnly } from "./adminOnlyRoutes";
 import Dashboard from "../components/Dashboard/dashboard";
 
-import CreateProducts from "../pages/Products/createProducts"
+import CreateProducts from "../pages/Products/createProducts";
+import { Support } from "../pages/Support";
 
 export const routers = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const routers = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <LoginPage />,
+      },
       {
         path: "/login",
         element: <LoginPage />,
@@ -52,17 +57,22 @@ export const routers = createBrowserRouter([
         ),
       },
       {
+        path: "/support",
+        element: <Support />,
+      },
+      {
         path: "/singup",
         element: <SignUpPage />,
       },
+
       {
         path: "/user-results",
-        element: <UserResults/>
+        element: <UserResults />,
       },
       {
         path: "/create-user",
-        element: <CreateProducts/>
-      }
+        element: <CreateProducts />,
+      },
     ],
   },
 ]);
