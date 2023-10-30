@@ -63,7 +63,7 @@ const FormLogin = () => {
         const { token } = responseToken;
         // localStorage.setItem("token", token);
         setToken(token);
-        navigate("/singup");
+        navigate("/dashboard");
       } else {
         const responseData = await response.json();
         if (responseData && responseData.error) {
@@ -91,7 +91,6 @@ const FormLogin = () => {
           />
         </Group>
         <Paper radius="md" p="xl" withBorder>
-          y
           <Text size="lg" weight={500}>
             Entrar com email e senha <br />
           </Text>
