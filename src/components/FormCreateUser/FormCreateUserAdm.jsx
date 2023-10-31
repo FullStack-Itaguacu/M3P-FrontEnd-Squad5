@@ -9,6 +9,7 @@ import 'dayjs/locale/pt-br';
 import dayjs from 'dayjs';
 import ValidarCPF from '../utils/ValidarCPF';
 import BuscaCEP from './BuscaCep';
+import { useAuth } from "../../context/AuthContext";
 
 import {
   TextInput,
@@ -25,7 +26,7 @@ import {
   Select
 } from '@mantine/core';
 
-const FormCreateUser = () => {
+const FormCreateUserAdm = () => {
   const type = 'registrar';
   const navigate = useNavigate();
 
@@ -90,7 +91,7 @@ const FormCreateUser = () => {
 
   const registrarUsuario = async (values) => {
 
-    const { cpf, birthDate, email, fullName, password, phone, zip, street, numberStreet, neighborhood, city, state, complement, lat, lon } = { ...values };
+    const { cpf, birthDate, email, fullName, password, phone, zip, street, numberStreet, neighborhood, city, state, complement, lat, lon, typeUser } = { ...values };
 
     const user = {
       fullName: fullName,
@@ -112,14 +113,18 @@ const FormCreateUser = () => {
         complement: complement,
         lat: lat,
         lon: lon,
+        typeUser: typeUser
+         
       },
     ];
 
     try {
-      const response = await fetch('http://localhost:3333/api/user/signup', {
+      const { token } = useAuth();
+      const response = await fetch('http://localhost:3333/api/user/admin/signup', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': {token}
         },
         body: JSON.stringify({ user, address }),
       });
@@ -147,15 +152,6 @@ const FormCreateUser = () => {
     <Group position='center'>
       <FormStyleCreateUser>
 
-        <Group>
-          <Image
-            src="LogoAppharma.png"
-            width={200}
-            height={200}
-            alt="Logomarca"
-            mx="auto" radius="md"
-          />
-        </Group>
         <Paper radius="md" p="xl" withBorder >
           <Text size="lg" weight={500}>
             Cadastro de Usuário <br />
@@ -325,6 +321,20 @@ const FormCreateUser = () => {
                       {...form.getInputProps('lon')}
                     />
                   </Grid.Col>
+                  <Grid.Col span={6}>
+                
+                   <Select
+                      withAsterisk
+                      label="Tipo Usuário"
+                      placeholder="Informe o tipo de usuário"
+                      required
+                      data={['Comprador', 'Administrador'
+                        
+                      ]}
+                      searchable
+                      {...form.getInputProps('typeUser')}
+                    />
+                  </Grid.Col>
                 </Grid>
               </>
 
@@ -372,4 +382,4 @@ const FormCreateUser = () => {
   );
 }
 
-export default FormCreateUser;
+export default FormCreateUserAdm;

@@ -6,6 +6,7 @@ import Cart from "../pages/Products/Cart";
 import { SignUpPage } from "../pages/SignUp";
 import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
+import { CreateUserAdmPage } from "../pages/User/UserCreateAdm";
 import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
 import { AdminOnly } from "./adminOnlyRoutes";
@@ -39,6 +40,10 @@ export const routers = createBrowserRouter([
       {
         path: "/createUser",
         element: <CreateUserPage />,
+      },
+      {
+        path: "/createUserAdm",
+        element: <CreateUserAdmPage />,
       },
       {
         path: "/products",
