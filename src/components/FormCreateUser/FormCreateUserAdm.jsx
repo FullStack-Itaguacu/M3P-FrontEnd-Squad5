@@ -21,7 +21,6 @@ import {
   Button,
   Anchor,
   Stack,
-  Image,
   Grid,
   Select
 } from '@mantine/core';
@@ -29,6 +28,7 @@ import {
 const FormCreateUserAdm = () => {
   const type = 'registrar';
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   const form = useForm({
     initialValues: {
@@ -92,7 +92,7 @@ const FormCreateUserAdm = () => {
   const registrarUsuario = async (values) => {
 
     const { cpf, birthDate, email, fullName, password, phone, zip, street, numberStreet, neighborhood, city, state, complement, lat, lon, typeUser } = { ...values };
-
+    console.log(typeUser)
     const user = {
       fullName: fullName,
       cpf: cpf,
@@ -100,6 +100,7 @@ const FormCreateUserAdm = () => {
       email: email,
       phone: phone,
       password: password,
+      typeUser: typeUser
     };
 
     const address = [
@@ -112,19 +113,17 @@ const FormCreateUserAdm = () => {
         state: state,
         complement: complement,
         lat: lat,
-        lon: lon,
-        typeUser: typeUser
-         
+        lon: lon
       },
     ];
 
+
     try {
-      const { token } = useAuth();
       const response = await fetch('http://localhost:3333/api/user/admin/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': {token}
+          'Authorization': token
         },
         body: JSON.stringify({ user, address }),
       });
@@ -328,7 +327,7 @@ const FormCreateUserAdm = () => {
                       label="Tipo Usuário"
                       placeholder="Informe o tipo de usuário"
                       required
-                      data={['Comprador', 'Administrador'
+                      data={['comprador', 'administrador'
                         
                       ]}
                       searchable

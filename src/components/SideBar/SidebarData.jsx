@@ -17,6 +17,12 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
+    title: "New Product",
+    path: "/createProduct",
+    icon: <FaIcons.FaLayerGroup />,
+    cName: "nav-text",
+  },
+  {
     title: "New User",
     path: "/createUserAdm",
     icon: <IoIcons.IoMdPeople />,
