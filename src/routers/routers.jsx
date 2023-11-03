@@ -14,6 +14,7 @@ import Sales from "../components/Sales/Sales";
 import CreateProducts from "../pages/Products/createProducts";
 import { Support } from "../pages/Support";
 import Purchases from "../components/Purchases/Purchases";
+import MyProducts from "../components/MyProducts/MyProducts";
 
 export const routers = createBrowserRouter([
   {
@@ -79,6 +80,14 @@ export const routers = createBrowserRouter([
         element: (
           <AdminOnly>
             <Sales />
+          </AdminOnly>
+        ),
+      },
+      {
+        path: "/meus-produtos",
+        element: (
+          <AdminOnly>
+            <MyProducts />
           </AdminOnly>
         ),
       },

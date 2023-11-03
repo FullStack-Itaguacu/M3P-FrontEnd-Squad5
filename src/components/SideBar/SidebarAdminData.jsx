@@ -18,6 +18,12 @@ export const SidebarAdminData = [
     cName: "nav-text",
   },
   {
+    title: "Meus produtos",
+    path: "/meus-produtos",
+    icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+  },
+  {
     title: "Novo usuário",
     path: "/createUser",
     icon: <IoIcons.IoMdPeople />,
