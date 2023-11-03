@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useToggle, upperFirst } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
 import { toast } from "react-toastify";
@@ -21,7 +22,13 @@ import { AuthContext } from "../../context/AuthContext";
 const FormLogin = () => {
   const [type] = useToggle(["entrar", "registrar"]);
   const navigate = useNavigate();
-  const { token, setToken, userId, typeUser } = useContext(AuthContext);
+  const { token, setToken, userId, isAdmin } = useContext(AuthContext);
+
+  if (token && isAdmin == "S") {
+    return <Navigate to="/dashboard" />;
+  } else if (token) {
+    return <Navigate to="/purchases" />;
+  }
 
   const form = useForm({
     initialValues: {

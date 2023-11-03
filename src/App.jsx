@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SideBar from "./components/SideBar/SideBar";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
+import Navbar from "./components/Navbar/Navbar";
 
 export const AppContext = createContext();
 
@@ -18,6 +19,7 @@ export const App = () => {
         <AppContext.Provider value={valoresVF}>
           <CartProvider>
             <div>
+              {/* <Navbar /> */}
               <SideBar />
               <Outlet />
             </div>
