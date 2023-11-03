@@ -18,6 +18,25 @@ export const SidebarBuyerData = [
     cName: "nav-text",
   },
   {
+
+    title: "New Product",
+    path: "/createProduct",
+    icon: <FaIcons.FaLayerGroup />,
+    cName: "nav-text",
+  },
+  {
+    title: "New User",
+    path: "/createUserAdm",
+    icon: <IoIcons.IoMdPeople />,
+    cName: "nav-text",
+  },
+  {
+    title: "List Users",
+    path: "/listUsers",
+    icon: <IoIcons.IoMdPeople />,
+    cName: "nav-text",
+  },
+  {
     title: "Carrinho",
     path: "/carrinho-de-compras",
     icon: <FaIcons.FaTruck />,

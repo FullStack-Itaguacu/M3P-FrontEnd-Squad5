@@ -9,6 +9,9 @@ import 'dayjs/locale/pt-br';
 import dayjs from 'dayjs';
 import ValidarCPF from '../utils/ValidarCPF';
 import BuscaCEP from './BuscaCep';
+import { useAuth } from "../../context/AuthContext";
+import { useLocation } from 'react-router-dom';
+import {  useEffect } from "react";
 
 import {
   TextInput,
@@ -20,17 +23,20 @@ import {
   Button,
   Anchor,
   Stack,
-  Image,
   Grid,
   Select
 } from '@mantine/core';
 
-const FormCreateUser = () => {
+const FormCreateUserAdm = () => {
+ 
+  const location = useLocation();
   const type = 'registrar';
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   const form = useForm({
     initialValues: {
+      id: '',
       email: '',
       cpf: '',
       fullName: '',
@@ -66,6 +72,22 @@ const FormCreateUser = () => {
     }
   });
 
+  useEffect(() => {
+    if (location.state) {
+      console.log(location.state)
+      form.setFieldValue('id', location.state.id)
+      form.setFieldValue('fullName', location.state.fullName)
+      form.setFieldValue('cpf', location.state.cpf)
+      form.setFieldValue('birthDate', new Date(location.state.birthDate))
+      form.setFieldValue('email', location.state.email)
+      form.setFieldValue('phone', location.state.phone)
+      form.setFieldValue('typeUser', location.state.typeUser)     
+    } else {
+      form.reset()
+
+    }
+  }, [location])
+
   function onchangeCep(values) {
     form.setFieldValue('street', values.logradouro)
     form.setFieldValue('neighborhood', values.bairro)
@@ -73,7 +95,6 @@ const FormCreateUser = () => {
     form.setFieldValue('state', values.estado)
     form.setFieldValue('lat', values.latitude)
     form.setFieldValue('lon', values.longitude)
-
   }
 
   function parseDate(input) {
@@ -90,7 +111,7 @@ const FormCreateUser = () => {
 
   const registrarUsuario = async (values) => {
 
-    const { cpf, birthDate, email, fullName, password, phone, zip, street, numberStreet, neighborhood, city, state, complement, lat, lon } = { ...values };
+    const { cpf, birthDate, email, fullName, password, phone, zip, street, numberStreet, neighborhood, city, state, complement, lat, lon, typeUser } = { ...values };
 
     const user = {
       fullName: fullName,
@@ -99,6 +120,7 @@ const FormCreateUser = () => {
       email: email,
       phone: phone,
       password: password,
+      typeUser: typeUser
     };
 
     const address = [
@@ -111,15 +133,17 @@ const FormCreateUser = () => {
         state: state,
         complement: complement,
         lat: lat,
-        lon: lon,
+        lon: lon
       },
     ];
 
+
     try {
-      const response = await fetch('http://localhost:3333/api/user/signup', {
+      const response = await fetch('http://localhost:3333/api/user/admin/signup', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': token
         },
         body: JSON.stringify({ user, address }),
       });
@@ -147,15 +171,6 @@ const FormCreateUser = () => {
     <Group position='center'>
       <FormStyleCreateUser>
 
-        <Group>
-          <Image
-            src="LogoAppharma.png"
-            width={200}
-            height={200}
-            alt="Logomarca"
-            mx="auto" radius="md"
-          />
-        </Group>
         <Paper radius="md" p="xl" withBorder >
           <Text size="lg" weight={500}>
             Cadastro de Usuário <br />
@@ -325,6 +340,20 @@ const FormCreateUser = () => {
                       {...form.getInputProps('lon')}
                     />
                   </Grid.Col>
+                  <Grid.Col span={6}>
+                
+                   <Select
+                      withAsterisk
+                      label="Tipo Usuário"
+                      placeholder="Informe o tipo de usuário"
+                      required
+                      data={['comprador', 'administrador'
+                        
+                      ]}
+                      searchable
+                      {...form.getInputProps('typeUser')}
+                    />
+                  </Grid.Col>
                 </Grid>
               </>
 
@@ -372,4 +401,4 @@ const FormCreateUser = () => {
   );
 }
 
-export default FormCreateUser;
+export default FormCreateUserAdm;

@@ -68,9 +68,12 @@ const FormLogin = () => {
       if (response.status === 200) {
         const responseToken = await response.json();
         const { token } = responseToken;
-        // localStorage.setItem("token", token);
         setToken(token);
-        navigate("/dashboard");
+        if (administrador) {
+          navigate("/dashboard")
+        } else {
+          navigate("/Products")
+        }
       } else {
         const responseData = await response.json();
         if (responseData && responseData.error) {
