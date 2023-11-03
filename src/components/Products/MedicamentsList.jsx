@@ -5,6 +5,7 @@ import "./MedicamentsList.css";
 import CardMedicamento from "./CardMedicamento";
 // import { LoginContext } from "../context/LoginContext";
 import axios from "axios";
+import { useAuth } from "../../context/AuthContext";
 
 function MedicamentsList() {
   const [listaMedicamentos, setListaMedicamentos] = useState([]);
@@ -14,6 +15,7 @@ function MedicamentsList() {
   const [filter, setFilter] = useState([]);
   const [next, setNext] = useState(false);
   const [previous, setPrevious] = useState(false);
+  const { token } = useAuth();
 
   const setPreviousPage = () => {
     setOffset(offset - limit);
@@ -26,7 +28,11 @@ function MedicamentsList() {
   useEffect(() => {
     const fetchData = () => {
       axios
-        .get(`http://localhost:3333/api/products/${offset}/${limit}`)
+        .get(`http://localhost:3333/api/products/${offset}/${limit}`, {
+          headers: {
+            Authorization: token,
+          },
+        })
         .then((response) => {
           if (response.data.data) {
             setListaMedicamentos(response.data.data);

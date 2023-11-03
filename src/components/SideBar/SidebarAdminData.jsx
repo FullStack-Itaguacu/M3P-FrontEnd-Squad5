@@ -24,8 +24,20 @@ export const SidebarAdminData = [
     cName: "nav-text",
   },
   {
+    title: "Cadastrar produto",
+    path: "/createProduct",
+    icon: <FaIcons.FaLayerGroup />,
+    cName: "nav-text",
+  },
+  {
     title: "Novo usuário",
-    path: "/createUser",
+    path: "/createUserAdm",
+    icon: <IoIcons.IoMdPeople />,
+    cName: "nav-text",
+  },
+  {
+    title: "Listar usuários",
+    path: "/listUsers",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
   },
@@ -45,12 +57,6 @@ export const SidebarAdminData = [
     title: "Carrinho",
     path: "/carrinho-de-compras",
     icon: <FaIcons.FaTruck />,
-    cName: "nav-text",
-  },
-  {
-    title: "Suporte",
-    path: "/support",
-    icon: <IoIcons.IoIosAlert />,
     cName: "nav-text",
   },
 ];

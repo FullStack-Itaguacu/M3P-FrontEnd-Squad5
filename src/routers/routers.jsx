@@ -7,7 +7,7 @@ import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserAdmPage } from "../pages/User/UserCreateAdm";
 import { ListUserPage } from "../pages/User/UsersList";
-import { CreateProductPage } from "../pages/Products/ProductCreate"
+import { CreateProductPage } from "../pages/Products/ProductCreate";
 import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
 import { AdminOnly } from "./adminOnlyRoutes";
@@ -17,6 +17,7 @@ import MeusProdutos from "../pages/Products/MyProducts";
 import PaginaDashboard from "../pages/Dashboard/PaginaDashboard";
 import PaginaSales from "../pages/Sales/Sales";
 import PaginaPurchases from "../pages/Sales/Purchases";
+import EditUser from "../pages/User/EditUser";
 
 export const routers = createBrowserRouter([
   {
@@ -54,15 +55,35 @@ export const routers = createBrowserRouter([
       },
       {
         path: "/createUserAdm",
-        element: <CreateUserAdmPage />,
+        element: (
+          <AdminOnly>
+            <CreateUserAdmPage />
+          </AdminOnly>
+        ),
+      },
+      {
+        path: "/editUser",
+        element: (
+          <AdminOnly>
+            <EditUser />
+          </AdminOnly>
+        ),
       },
       {
         path: "/createProduct",
-        element: <CreateProductPage />,
+        element: (
+          <AdminOnly>
+            <CreateProductPage />
+          </AdminOnly>
+        ),
       },
       {
         path: "/listUsers",
-        element: <ListUserPage />,
+        element: (
+          <AdminOnly>
+            <ListUserPage />
+          </AdminOnly>
+        ),
       },
       {
         path: "/products",
@@ -95,19 +116,6 @@ export const routers = createBrowserRouter([
             <MeusProdutos />
           </AdminOnly>
         ),
-      },
-      {
-        path: "/support",
-        element: <Support />,
-      },
-      {
-        path: "/singup",
-        element: <SignUpPage />,
-      },
-
-      {
-        path: "/create-user",
-        element: <CreateProducts />,
       },
     ],
   },

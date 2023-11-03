@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { Container, Radio, Select, Flex, Button, Text } from "@mantine/core";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function Checkout() {
   const [addresses, setAddresses] = useState([]);
@@ -12,14 +13,21 @@ function Checkout() {
   const [pagamento, setPagamento] = useState("");
   const { cartItems, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   useEffect(() => {
     const fetchData = () => {
       setLoading(true);
-      axios.get(`http://localhost:3333/api/buyers/address`).then((response) => {
-        setAddresses(response.data);
-        setLoading(false);
-      });
+      axios
+        .get(`http://localhost:3333/api/buyers/address`, {
+          headers: {
+            Authorization: token,
+          },
+        })
+        .then((response) => {
+          setAddresses(response.data);
+          setLoading(false);
+        });
     };
     fetchData();
   }, []);
@@ -37,12 +45,15 @@ function Checkout() {
       };
     });
     try {
-      console.log(compra);
       const response = await axios.post(
         "http://localhost:3333/api/sales/",
-        compra
+        compra,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
       );
-      console.log(response);
       toast.success(response.data.message);
       clearCart();
       return navigate("/purchases");
