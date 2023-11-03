@@ -1,47 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import '../Navbar/Navbar.css'
+import "../Navbar/Navbar.css";
 import Button from "../Button/Button";
+import { useAuth } from "../../context/AuthContext";
+import { Badge } from "@mantine/core";
+import { FaShoppingCart } from "react-icons/fa";
+import { CartContext } from "../../context/CartContext";
 
 function Navbar() {
+  const [totalItems, setTotalItems] = useState(0);
+  const { token, setToken } = useAuth();
+  const { cartItems } = useContext(CartContext);
 
-    const [userName, setUserName] = useState('');
+  useEffect(() => {
+    setTotalItems(cartItems.length);
+  }, [cartItems]);
 
-    // Adicionando o nome do usuário ao estado quando a resposta da API chegar
-    useEffect(() => {
-        async function getUserFullName() {
-            try {
-                const response = await fetch('http://localhost:3333/api/user/login/');
-                const data = await response.json();
-                if (data.fullName) {
-                    setUserName(data.fullName);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        getUserFullName();
-    }, []);
+  const handleLogout = () => {
+    setToken("");
+    return <Navigate to="/" />;
+  };
 
-    return (
-        <div>
-            <nav>
-                <Link to="/minhas-compras">
-                    Minhas Compras
-                </Link>
-
-                <Link to="/carrinho-de-compras">
-                    Carrinho de Compras
-                </Link>
-                
-                <div>
-                    {userName && <p>Olá, {userName}!</p>}
-                </div>
-
-                <Button text="Sair" onClick={handleLogout} />
-            </nav>
-        </div>
-    )
+  return (
+    <div>
+      {!token ? (
+        <nav>
+          <Link to="/login">Login</Link>
+        </nav>
+      ) : (
+        <nav>
+          <Badge
+            styles={{ root: { cursor: "pointer" } }}
+            size="xl"
+            component={Link}
+            to="/carrinho-de-compras"
+            leftSection={<FaShoppingCart color="black" />}
+          >
+            {totalItems}
+          </Badge>
+          <Button text="Sair" onClick={handleLogout} />
+        </nav>
+      )}
+    </div>
+  );
 }
 
 export default Navbar;
