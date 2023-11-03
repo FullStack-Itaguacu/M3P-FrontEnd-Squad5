@@ -2,12 +2,19 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import { BiPurchaseTagAlt } from "react-icons/bi";
 
 export const SidebarData = [
   {
     title: "Dashboard",
     path: "/dashboard",
     icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+  },
+  {
+    title: "Compras",
+    path: "/purchases",
+    icon: <BiPurchaseTagAlt />,
     cName: "nav-text",
   },
   {

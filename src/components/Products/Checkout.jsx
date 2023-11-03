@@ -45,7 +45,7 @@ function Checkout() {
       console.log(response);
       toast.success(response.data.message);
       clearCart();
-      return navigate("/");
+      return navigate("/purchases");
     } catch (error) {
       console.log(error);
       toast.error(error.message);
