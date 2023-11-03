@@ -13,6 +13,7 @@ import Dashboard from "../components/Dashboard/dashboard";
 
 import CreateProducts from "../pages/Products/createProducts";
 import { Support } from "../pages/Support";
+import Sales from "../components/Purchases/Purchases";
 
 export const routers = createBrowserRouter([
   {
@@ -66,8 +67,12 @@ export const routers = createBrowserRouter([
       },
 
       {
-        path: "/user-results",
-        element: <UserResults />,
+        path: "/purchases",
+        element: (
+          <ProtectedRoute>
+            <Sales />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/create-user",

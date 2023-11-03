@@ -28,7 +28,9 @@ function MedicamentsList() {
       axios
         .get(`http://localhost:3333/api/products/${offset}/${limit}`)
         .then((response) => {
-          setListaMedicamentos(response.data.data);
+          if (response.data.data) {
+            setListaMedicamentos(response.data.data);
+          }
         });
     };
     fetchData();
