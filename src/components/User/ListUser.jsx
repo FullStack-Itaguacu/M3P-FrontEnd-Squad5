@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from 'react-toastify';
 import { useForm } from '@mantine/form';
+import { Container } from "./styled";
 import CardUser from "../../components/CardUser/CardUser";
-import "./UserList.css";
-
 
 const ListUser = () => {
   const navigate = useNavigate();
@@ -36,10 +35,8 @@ useEffect(() => {
       }).then((dados) => {setListaUsuarios(dados.users)})
   }, []);
 
-console.log(listaUsuarios)
-
   return (
-    <div>
+    <Container>
        <Group position="right" mr={40}>
        <Button ml={10} mt={30} color="blue" onClick={() => navigate("/createUserAdm")}> Novo Usuário</Button>
        </Group>
@@ -52,7 +49,7 @@ console.log(listaUsuarios)
         })}
 
        </Grid>
-    </div>
+    </Container>
   );
 };
 

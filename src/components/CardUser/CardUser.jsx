@@ -31,11 +31,14 @@ const CardUser = ({user})=> {
   
       </Group>
 
-    
-
       <Text truncate shadow="sm" padding="lg" radius="md" color="dimmed">
         {user.email}
       </Text>
+
+      <Badge color="blue" variant="light">
+        {user.typeUser}
+      </Badge>
+
     
       <InformacoesDetalhadasUser user={user} /> 
     </Card>

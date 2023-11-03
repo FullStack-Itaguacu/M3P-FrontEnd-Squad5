@@ -1,6 +1,6 @@
 import { Popover, Text, Button } from '@mantine/core';
 
-function InformacoesDetalhadasUser({ user }) {
+function InformacoesDetalhadasUser({ user, address }) {
 
   return (
     <Popover width={400} position="bottom" withArrow shadow="md">
@@ -18,11 +18,8 @@ function InformacoesDetalhadasUser({ user }) {
             <Text>
               <b>Telefone:</b> {user.phone}
             </Text>
-
-            <Text>
-              <b>Tipo Usuário:</b> {user.typeUser}
-            </Text>
             </div>   
+            
         </Text>
       </Popover.Dropdown>
     </Popover>

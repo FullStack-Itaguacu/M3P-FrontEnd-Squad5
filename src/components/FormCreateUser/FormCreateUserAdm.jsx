@@ -30,13 +30,13 @@ import {
 const FormCreateUserAdm = () => {
  
   const location = useLocation();
-
   const type = 'registrar';
   const navigate = useNavigate();
   const { token } = useAuth();
 
   const form = useForm({
     initialValues: {
+      id: '',
       email: '',
       cpf: '',
       fullName: '',
@@ -74,14 +74,17 @@ const FormCreateUserAdm = () => {
 
   useEffect(() => {
     if (location.state) {
+      console.log(location.state)
+      form.setFieldValue('id', location.state.id)
       form.setFieldValue('fullName', location.state.fullName)
       form.setFieldValue('cpf', location.state.cpf)
-      form.setFieldValue('birthDate', location.state.birthDate)
+      form.setFieldValue('birthDate', new Date(location.state.birthDate))
       form.setFieldValue('email', location.state.email)
       form.setFieldValue('phone', location.state.phone)
       form.setFieldValue('typeUser', location.state.typeUser)     
     } else {
       form.reset()
+
     }
   }, [location])
 
