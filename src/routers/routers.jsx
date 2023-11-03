@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "../App";
-import { UserResults } from "../pages/User/UserResults";
 import Products from "../pages/Products/Products";
 import Cart from "../pages/Products/Cart";
 import { SignUpPage } from "../pages/SignUp";
@@ -9,11 +8,12 @@ import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
 import { AdminOnly } from "./adminOnlyRoutes";
-import Dashboard from "../components/Dashboard/dashboard";
-import Sales from "../components/Sales/Sales";
 import CreateProducts from "../pages/Products/createProducts";
 import { Support } from "../pages/Support";
-import Purchases from "../components/Purchases/Purchases";
+import MeusProdutos from "../pages/Products/MyProducts";
+import PaginaDashboard from "../pages/Dashboard/PaginaDashboard";
+import PaginaSales from "../pages/Sales/Sales";
+import PaginaPurchases from "../pages/Sales/Purchases";
 
 export const routers = createBrowserRouter([
   {
@@ -30,16 +30,24 @@ export const routers = createBrowserRouter([
         element: <LoginPage />,
       },
       {
+        path: "/createUser",
+        element: <CreateUserPage />,
+      },
+      {
         path: "/dashboard",
         element: (
           <AdminOnly>
-            <Dashboard />
+            <PaginaDashboard />
           </AdminOnly>
         ),
       },
       {
-        path: "/createUser",
-        element: <CreateUserPage />,
+        path: "/purchases",
+        element: (
+          <ProtectedRoute>
+            <PaginaPurchases />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/products",
@@ -58,6 +66,22 @@ export const routers = createBrowserRouter([
         ),
       },
       {
+        path: "/sales",
+        element: (
+          <AdminOnly>
+            <PaginaSales />
+          </AdminOnly>
+        ),
+      },
+      {
+        path: "/meus-produtos",
+        element: (
+          <AdminOnly>
+            <MeusProdutos />
+          </AdminOnly>
+        ),
+      },
+      {
         path: "/support",
         element: <Support />,
       },
@@ -66,22 +90,6 @@ export const routers = createBrowserRouter([
         element: <SignUpPage />,
       },
 
-      {
-        path: "/purchases",
-        element: (
-          <ProtectedRoute>
-            <Purchases />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/sales",
-        element: (
-          <AdminOnly>
-            <Sales />
-          </AdminOnly>
-        ),
-      },
       {
         path: "/create-user",
         element: <CreateProducts />,
