@@ -7,6 +7,7 @@ import { SignUpPage } from "../pages/SignUp";
 import { LoginPage } from "../pages/User/UserLogin";
 import { ErrorPage } from "../pages/ErrorPage";
 import { CreateUserAdmPage } from "../pages/User/UserCreateAdm";
+import { ListUserPage } from "../pages/User/UsersList";
 import { CreateProductPage } from "../pages/Products/ProductCreate"
 import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
@@ -49,6 +50,10 @@ export const routers = createBrowserRouter([
       {
         path: "/createProduct",
         element: <CreateProductPage />,
+      },
+      {
+        path: "/listUsers",
+        element: <ListUserPage />,
       },
       {
         path: "/products",

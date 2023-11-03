@@ -10,6 +10,8 @@ import dayjs from 'dayjs';
 import ValidarCPF from '../utils/ValidarCPF';
 import BuscaCEP from './BuscaCep';
 import { useAuth } from "../../context/AuthContext";
+import { useLocation } from 'react-router-dom';
+import {  useEffect } from "react";
 
 import {
   TextInput,
@@ -26,6 +28,9 @@ import {
 } from '@mantine/core';
 
 const FormCreateUserAdm = () => {
+ 
+  const location = useLocation();
+
   const type = 'registrar';
   const navigate = useNavigate();
   const { token } = useAuth();
@@ -67,6 +72,19 @@ const FormCreateUserAdm = () => {
     }
   });
 
+  useEffect(() => {
+    if (location.state) {
+      form.setFieldValue('fullName', location.state.fullName)
+      form.setFieldValue('cpf', location.state.cpf)
+      form.setFieldValue('birthDate', location.state.birthDate)
+      form.setFieldValue('email', location.state.email)
+      form.setFieldValue('phone', location.state.phone)
+      form.setFieldValue('typeUser', location.state.typeUser)     
+    } else {
+      form.reset()
+    }
+  }, [location])
+
   function onchangeCep(values) {
     form.setFieldValue('street', values.logradouro)
     form.setFieldValue('neighborhood', values.bairro)
@@ -74,7 +92,6 @@ const FormCreateUserAdm = () => {
     form.setFieldValue('state', values.estado)
     form.setFieldValue('lat', values.latitude)
     form.setFieldValue('lon', values.longitude)
-
   }
 
   function parseDate(input) {
@@ -92,7 +109,7 @@ const FormCreateUserAdm = () => {
   const registrarUsuario = async (values) => {
 
     const { cpf, birthDate, email, fullName, password, phone, zip, street, numberStreet, neighborhood, city, state, complement, lat, lon, typeUser } = { ...values };
-    console.log(typeUser)
+
     const user = {
       fullName: fullName,
       cpf: cpf,
