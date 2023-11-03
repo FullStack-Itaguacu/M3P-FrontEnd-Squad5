@@ -4,7 +4,6 @@ import { useDisclosure } from "@mantine/hooks";
 import ModalContent from "./ModalContent";
 
 function CardProduct({ produto }) {
-  console.log(produto);
   const [opened, handlers] = useDisclosure(false);
   function isImage(url) {
     return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
@@ -24,7 +23,7 @@ function CardProduct({ produto }) {
       <Modal
         opened={opened}
         onClose={handlers.close}
-        title="Medicamentos comprados"
+        title="Editar medicamento"
       >
         <ModalContent produto={produto} />
       </Modal>
@@ -45,7 +44,7 @@ function CardProduct({ produto }) {
         {produto.description}
       </Text>
       <Text>Estoque: {produto.totalStock}</Text>
-      <Button>Editar produto</Button>
+      <Button onClick={handlers.open}>Editar produto</Button>
     </Card>
   );
 }
