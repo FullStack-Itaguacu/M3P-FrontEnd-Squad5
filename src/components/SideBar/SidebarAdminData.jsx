@@ -4,7 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 
-export const SidebarData = [
+export const SidebarAdminData = [
   {
     title: "Dashboard",
     path: "/dashboard",
@@ -12,31 +12,37 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Compras",
-    path: "/purchases",
-    icon: <BiPurchaseTagAlt />,
+    title: "Minhas vendas",
+    path: "/sales",
+    icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
   {
-    title: "Products",
-    path: "/products",
-    icon: <FaIcons.FaLayerGroup />,
-    cName: "nav-text",
-  },
-  {
-    title: "New User",
+    title: "Novo usuário",
     path: "/createUser",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
   },
   {
-    title: "Check Out",
+    title: "Minhas compras",
+    path: "/purchases",
+    icon: <BiPurchaseTagAlt />,
+    cName: "nav-text",
+  },
+  {
+    title: "Produtos",
+    path: "/products",
+    icon: <FaIcons.FaLayerGroup />,
+    cName: "nav-text",
+  },
+  {
+    title: "Carrinho",
     path: "/carrinho-de-compras",
     icon: <FaIcons.FaTruck />,
     cName: "nav-text",
   },
   {
-    title: "Support",
+    title: "Suporte",
     path: "/support",
     icon: <IoIcons.IoIosAlert />,
     cName: "nav-text",

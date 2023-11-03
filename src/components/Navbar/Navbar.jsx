@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import "../Navbar/Navbar.css";
 import Button from "../Button/Button";
 import { useAuth } from "../../context/AuthContext";
-import { Badge } from "@mantine/core";
+import { Badge, Text } from "@mantine/core";
 import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from "../../context/CartContext";
 
 function Navbar() {
   const [totalItems, setTotalItems] = useState(0);
-  const { token, setToken } = useAuth();
+  const { token, setToken, usuario } = useAuth();
   const { cartItems } = useContext(CartContext);
 
   useEffect(() => {
@@ -30,6 +30,7 @@ function Navbar() {
         </nav>
       ) : (
         <nav>
+          <Text>Bem vindo(a) {usuario}</Text>
           <Badge
             styles={{ root: { cursor: "pointer" } }}
             size="xl"

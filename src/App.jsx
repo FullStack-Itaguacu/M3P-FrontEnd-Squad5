@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { createContext } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SideBar from "./components/SideBar/SideBar";
+import Sidebar from "./components/SideBar/SideBar";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/Navbar/Navbar";
@@ -20,7 +20,7 @@ export const App = () => {
           <CartProvider>
             <div>
               {/* <Navbar /> */}
-              <SideBar />
+              <Sidebar />
               <Outlet />
             </div>
           </CartProvider>
