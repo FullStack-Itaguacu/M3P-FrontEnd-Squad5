@@ -10,10 +10,10 @@ import { CreateUserPage } from "../pages/User/UserCreate";
 import { ProtectedRoute } from "./protectedRoutes";
 import { AdminOnly } from "./adminOnlyRoutes";
 import Dashboard from "../components/Dashboard/dashboard";
-
+import Sales from "../components/Sales/Sales";
 import CreateProducts from "../pages/Products/createProducts";
 import { Support } from "../pages/Support";
-import Sales from "../components/Purchases/Purchases";
+import Purchases from "../components/Purchases/Purchases";
 
 export const routers = createBrowserRouter([
   {
@@ -70,8 +70,16 @@ export const routers = createBrowserRouter([
         path: "/purchases",
         element: (
           <ProtectedRoute>
-            <Sales />
+            <Purchases />
           </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/sales",
+        element: (
+          <AdminOnly>
+            <Sales />
+          </AdminOnly>
         ),
       },
       {

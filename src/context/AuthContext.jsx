@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [userId, setUserId] = useState("");
   const [isAdmin, setIsAdmin] = useState("");
+  const [usuario, setUsuario] = useState("");
 
   useEffect(() => {
     if (token) {
@@ -15,6 +16,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", token);
       setUserId(jwtDecode(token).id);
       setIsAdmin(jwtDecode(token).administrador);
+      setUsuario(jwtDecode(token).usuario);
     } else {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("token");
@@ -22,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   return (
-    <AuthContext.Provider value={{ token, setToken, userId, isAdmin }}>
+    <AuthContext.Provider value={{ token, setToken, userId, isAdmin, usuario }}>
       <>{children}</>
     </AuthContext.Provider>
   );
